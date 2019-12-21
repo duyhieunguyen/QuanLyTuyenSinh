@@ -1,6 +1,9 @@
 package com.edu.giadinh.studentregistration.repository;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.edu.giadinh.studentregistration.model.StudentRegistration;
@@ -9,12 +12,12 @@ import com.edu.giadinh.studentregistration.model.StudentRegistration;
 public interface StudentRegistrationRepository extends MongoRepository<StudentRegistration, String> {
 
 	StudentRegistration findByEmail(String email);
-//	List<Student> findStudentByName(String name);
+	List<StudentRegistration> findCustomByEmail(String email);
 //
 //	Student findById(Long id);
 //
-//	//JSON query string
-//	@Query("{fullName:'?0'}")
-//	List<Student> findCustomByFullName(String fullName);
+	//JSON query string
+	@Query("{fullName:'?0'}")
+	List<StudentRegistration> findEmailByName(String fullName);
 
 }

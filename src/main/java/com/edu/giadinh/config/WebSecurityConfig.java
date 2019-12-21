@@ -4,15 +4,12 @@ import java.io.IOException;
 import java.util.Properties;
 
 import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -45,9 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/**").permitAll().antMatchers("/dangkytuyensinh").permitAll()
-				.antMatchers("/xemHoSo**").permitAll().antMatchers("/dashboard/**").permitAll()
-				.antMatchers("/dashboard2/**").hasAuthority("ADMIN").anyRequest().authenticated().and().csrf().disable()
-				.formLogin().successHandler(customizeAuthenticationSuccessHandler).loginPage("/login")
+				.antMatchers("/xemHoSoDangKyTuyenSinh**").permitAll().antMatchers("/xemHoSo**").permitAll()
+				.antMatchers("/dashboard/**").permitAll().antMatchers("/dashboard2/**").hasAuthority("ADMIN")
+				.anyRequest().authenticated().and().csrf().disable().formLogin()
+				.successHandler(customizeAuthenticationSuccessHandler).loginPage("/login")
 				.failureUrl("/login?error=true").usernameParameter("email").passwordParameter("password").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").and()
 				.exceptionHandling();
@@ -75,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		mailSender.setPassword("Vietanh123");
 		Properties props = mailSender.getJavaMailProperties();
 		props.put("mail.smtp.starttls.enable", "true");
-		 
+
 		return mailSender;
 	}
 

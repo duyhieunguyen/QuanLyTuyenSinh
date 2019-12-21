@@ -5,14 +5,32 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-<title>Đăng Ký Tuyển Sinh</title>
+<title>Xem Hồ Sơ</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="/css/dangkytuyensinh.min.css?h=c63e89b3c3c9bf46d2111193f5b67830">
+	href="/css/xemhosodangky.min.css?h=c63e89b3c3c9bf46d2111193f5b67830">
 </head>
 
 <body>
+	<div class="container" style="height: 100px">
+		<h3 style="text-align: center;">Quá trình xét duyệt hồ sơ</h3>
+
+		<div class="progress">
+			<div
+				class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+				style="width: 25%">Đã đăng ký</div>
+			<div
+				class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+				style="width: 25%">Chờ duyệt</div>
+			<div
+				class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
+				style="width: 25%">Trúng tuyển</div>
+			<div
+				class="progress-bar bg-blue progress-bar-striped progress-bar-animated"
+				style="width: 25%">Đang học</div>
+		</div>
+	</div>
 	<!-- Start: Projects Horizontal -->
 
 	<div class="projects-horizontal">
@@ -40,7 +58,7 @@
 	</div>
 	<!-- End: THÔNG TIN CHUNG -->
 	<!-- Start: 1 Row 2 Columns -->
-	<form th:action="@{/dangkytuyensinh}" method="post"
+	<form th:action="@{/xemHoSoDangKyTuyenSinh}" method="post"
 		th:object="${student}">
 		<div>
 			<div class="container">
@@ -49,12 +67,11 @@
 					<div class="col-md-6">
 						<!-- Start: Mã SV -->
 						<div class="group">
-							<input type="text" name="studentCode" th:field="*{studentCode}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Mã
-								SV</label>
+							<input type="text" name="studentCode" th:field="*{studentCode}"
+								value="${student.studentCode}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Mã SV</label>
 						</div>
-
-
 
 						<!-- End: Mã SV -->
 					</div>
@@ -63,9 +80,10 @@
 					<div class="col-md-6">
 						<!-- Start: Họ Tên -->
 						<div class="group">
-							<input type="text" name="fullName" th:field="*{fullName}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Họ
-								tên</label>
+							<input type="text" name="fullName" th:field="*{fullName}"
+								th:value="${student.fullName}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Họ tên</label>
 						</div>
 
 
@@ -78,8 +96,8 @@
 						<!-- Start: Ngày Sinh -->
 						<div class="group">
 
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Ngày
-								sinh</label>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Ngày sinh</label>
 						</div>
 
 
@@ -102,9 +120,10 @@
 					<div class="col-md-6">
 						<!-- Start: Nơi Sinh -->
 						<div class="group">
-							<input type="text" name="placeOfBirth" th:field="*{placeOfBirth}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Nơi
-								sinh</label>
+							<input type="text" name="placeOfBirth" th:field="*{placeOfBirth}"
+								th:value="${student.placeOfBirth}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Nơi sinh</label>
 						</div>
 
 
@@ -117,8 +136,8 @@
 						<!-- Start: Giới tính -->
 						<div class="group">
 
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Giới
-								tính</label>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Giới tính</label>
 						</div>
 
 
@@ -147,9 +166,10 @@
 					<div class="col-md-6">
 						<!-- Start: Số CMND -->
 						<div class="group">
-							<input type="text" name="idOfStudent" th:field="*{idOfStudent}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Số
-								CMND</label>
+							<input type="text" name="idOfStudent" th:field="*{idOfStudent}"
+								th:value="${student.idOfStudent}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Số CMND</label>
 						</div>
 
 
@@ -161,9 +181,10 @@
 					<div class="col-md-6">
 						<!-- Start: Khu vực -->
 						<div class="group">
-							<input type="text" name="areaCode" th:field="*{areaCode}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Khu
-								vực</label>
+							<input type="text" name="areaCode" th:field="*{areaCode}"
+								th:value="${student.areaCode}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Khu vực</label>
 						</div>
 
 
@@ -176,9 +197,11 @@
 						<!-- Start: Số điện thoại -->
 						<div class="group">
 							<input type="text" name="phoneNumber" th:field="*{phoneNumber}"
+								th:value="${student.phoneNumber}"
 								onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-								maxlength="10" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Số điện thoại</label>
+								maxlength="10" readonly> <span class="highlight"></span>
+							<span class="bar"></span> <label class="active">Số điện
+								thoại</label>
 						</div>
 
 
@@ -189,18 +212,11 @@
 					<!-- Start: Email -->
 					<div class="col-md-6">
 						<!-- Start: Email -->
-						<div class="group"
-							th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-							<span
-								onclick="alert('Chúng tôi sẽ thông báo kết quả qua Email này! Mong bạn nhập đúng!')"><input
-								th:field="*{email}" type="text" name="email" id="email"
-								onclick="InvalidMsg(this);" oninvalid="InvalidMsg(this);"
-								oninput="InvalidMsg(this);" required="required"> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Email</label>
-							</span>
-							<p class="error-message" style="color: red;"
-								th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
-								error</p>
+						<div class="group">
+							<input th:field="*{email}" th:value="${student.email}"
+								type="text" name="email" id="email" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Email</label> </span>
 						</div>
 
 						<!-- End: Email -->
@@ -210,8 +226,8 @@
 					<div class="col-md-6">
 						<!-- Start: Ngành đăng ký -->
 						<div class="group">
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Ngành
-								đăng ký</label>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Ngành đăng ký</label>
 						</div>
 
 
@@ -220,7 +236,8 @@
 						<!-- Start: Ngành đăng ký -->
 						<div class="edit-1">
 							<select class="mdb-select colorful-select dropdown-info"
-								name="majorRegistration" th:field="*{majorRegistration}">
+								name="majorRegistration" th:field="*{majorRegistration}"
+								th:value="${student.majorRegistration}">
 								<option value="Kỹ thuật phần mềm">Kỹ thuật phần mềm</option>
 								<option value="Truyền thông và mạng máy tính">Truyền
 									thông và mạng máy tính</option>
@@ -260,9 +277,10 @@
 					<div class="col-md-6">
 						<!-- Start: Địa chỉ -->
 						<div class="group">
-							<input type="text" name="address" th:field="*{address}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Địa
-								chỉ</label>
+							<input type="text" name="address" th:field="*{address}"
+								th:value="${student.address}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Địa chỉ</label>
 						</div>
 
 
@@ -274,9 +292,10 @@
 					<div class="col-md-6">
 						<!-- Start: Phường xã -->
 						<div class="group">
-							<input type="text" name="subDistrict" th:field="*{subDistrict}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Phường
-								xã</label>
+							<input type="text" name="subDistrict" th:field="*{subDistrict}"
+								th:value="${student.subDistrict}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Phường xã</label>
 						</div>
 
 
@@ -288,9 +307,10 @@
 					<div class="col-md-6">
 						<!-- Start: Quận huyện -->
 						<div class="group">
-							<input type="text" name="district" th:field="*{district}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Quận
-								huyện</label>
+							<input type="text" name="district" th:field="*{district}"
+								th:value="${student.district}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Quận huyện</label>
 						</div>
 
 
@@ -302,9 +322,10 @@
 					<div class="col-md-6">
 						<!-- Start: Tỉnh thành -->
 						<div class="group">
-							<input type="text" name="province" th:field="*{province}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Tỉnh
-								thành</label>
+							<input type="text" name="province" th:field="*{province}"
+								th:value="${student.province}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Tỉnh thành</label>
 						</div>
 
 
@@ -425,9 +446,10 @@
 					<div class="col-md-6">
 						<!-- Start: Họ tên cha -->
 						<div class="group">
-							<input type="text" name="nameOfFather" th:field="*{nameOfFather}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Họ
-								tên cha</label>
+							<input type="text" name="nameOfFather" th:field="*{nameOfFather}"
+								th:value="${student.nameOfFather}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Họ tên cha</label>
 						</div>
 
 
@@ -441,8 +463,10 @@
 						<div class="group">
 							<input type="text" name="phoneNumberOfFather"
 								onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-								maxlength="10" th:field="*{phoneNumberOfFather}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Số điện thoại</label>
+								maxlength="10" th:field="*{phoneNumberOfFather}"
+								th:value="${student.phoneNumberOfFather}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Số điện thoại</label>
 						</div>
 
 
@@ -454,9 +478,10 @@
 					<div class="col-md-6">
 						<!-- Start: Họ tên mẹ -->
 						<div class="group">
-							<input type="text" name="nameOfMother" th:field="*{nameOfMother}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Họ
-								tên mẹ</label>
+							<input type="text" name="nameOfMother" th:field="*{nameOfMother}"
+								th:value="${student.nameOfMother}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Họ tên mẹ</label>
 						</div>
 
 
@@ -468,10 +493,13 @@
 					<div class="col-md-6">
 						<!-- Start: Số điện thoại -->
 						<div class="group">
-							<input type="text" name="phoneNumberOfMother" th:field="*{phoneNumberOfMother}"
+							<input type="text" name="phoneNumberOfMother"
+								th:field="*{phoneNumberOfMother}"
+								th:value="${student.phoneNumberOfMother}"
 								onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-								maxlength="10" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Số điện thoại</label>
+								maxlength="10" readonly> <span class="highlight"></span>
+							<span class="bar"></span> <label class="active">Số điện
+								thoại</label>
 						</div>
 
 
@@ -504,8 +532,11 @@
 					<div class="col-md-6">
 						<!-- Start: Toán -->
 						<div class="group">
-							<input type="text" name="mathScoresInSchoolReport" th:field="*{mathScoresInSchoolReport}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Toán</label>
+							<input type="text" name="mathScoresInSchoolReport"
+								th:field="*{mathScoresInSchoolReport}"
+								th:value="${student.mathScoresInSchoolReport}" readonly>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Toán</label>
 						</div>
 
 
@@ -517,8 +548,11 @@
 					<div class="col-md-6">
 						<!-- Start: Lý -->
 						<div class="group">
-							<input type="text" name="physicsScoresInSchoolReport" th:field="*{physicsScoresInSchoolReport}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Lý</label>
+							<input type="text" name="physicsScoresInSchoolReport"
+								th:field="*{physicsScoresInSchoolReport}"
+								th:value="${student.physicsScoresInSchoolReport}" readonly>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Lý</label>
 						</div>
 
 
@@ -530,8 +564,11 @@
 					<div class="col-md-6">
 						<!-- Start: Hóa -->
 						<div class="group">
-							<input type="text" name="chemistryScoresInSchoolReport" th:field="*{chemistryScoresInSchoolReport}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Hóa</label>
+							<input type="text" name="chemistryScoresInSchoolReport"
+								th:field="*{chemistryScoresInSchoolReport}"
+								th:value="${student.chemistryScoresInSchoolReport}" readonly>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Hóa</label>
 						</div>
 
 
@@ -543,8 +580,11 @@
 					<div class="col-md-6">
 						<!-- Start: Văn -->
 						<div class="group">
-							<input type="text" name="literaryScoresInSchoolReport" th:field="*{literaryScoresInSchoolReport}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Văn</label>
+							<input type="text" name="literaryScoresInSchoolReport"
+								th:field="*{literaryScoresInSchoolReport}"
+								th:value="${student.literaryScoresInSchoolReport}" readonly>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Văn</label>
 						</div>
 
 
@@ -578,8 +618,11 @@
 					<div class="col-md-6">
 						<!-- Start: Toán -->
 						<div class="group">
-							<input type="text" name="mathScoresOfGraduationTest" th:field="*{mathScoresOfGraduationTest}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Toán</label>
+							<input type="text" name="mathScoresOfGraduationTest"
+								th:field="*{mathScoresOfGraduationTest}"
+								th:value="${student.mathScoresOfGraduationTest}" readonly>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Toán</label>
 						</div>
 
 
@@ -591,8 +634,11 @@
 					<div class="col-md-6">
 						<!-- Start: Lý -->
 						<div class="group">
-							<input type="text" name="physicsScoresOfGraduationTest" th:field="*{physicsScoresOfGraduationTest}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Lý</label>
+							<input type="text" name="physicsScoresOfGraduationTest"
+								th:field="*{physicsScoresOfGraduationTest}"
+								th:value="${student.physicsScoresOfGraduationTest}" readonly>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Lý</label>
 						</div>
 
 
@@ -604,9 +650,11 @@
 					<div class="col-md-6">
 						<!-- Start: Hóa -->
 						<div class="group">
-							<input type="text" name="chemistryScoresOfGraduationTest" th:field="*{chemistryScoresOfGraduationTest}"
-								required> <span class="highlight"></span> <span
-								class="bar"></span> <label class="active">Hóa</label>
+							<input type="text" name="chemistryScoresOfGraduationTest"
+								th:field="*{chemistryScoresOfGraduationTest}"
+								th:value="${student.chemistryScoresOfGraduationTest}" readonly>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Hóa</label>
 						</div>
 
 
@@ -618,8 +666,11 @@
 					<div class="col-md-6">
 						<!-- Start: Văn -->
 						<div class="group">
-							<input type="text" name="literaryScoresOfGraduationTest" th:field="*{literaryScoresOfGraduationTest}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Văn</label>
+							<input type="text" name="literaryScoresOfGraduationTest"
+								th:field="*{literaryScoresOfGraduationTest}"
+								th:value="${student.literaryScoresOfGraduationTest}" readonly>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Văn</label>
 						</div>
 
 
@@ -652,8 +703,11 @@
 					<div class="col-md-6">
 						<!-- Start: Tên trường -->
 						<div class="group">
-							<input type="text" name="subDistrictSchool" th:field="*{subDistrictSchool}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Tên trường</label>
+							<input type="text" name="subDistrictSchool"
+								th:field="*{subDistrictSchool}"
+								th:value="${student.subDistrictSchool}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Tên trường</label>
 						</div>
 
 
@@ -665,8 +719,10 @@
 					<div class="col-md-6">
 						<!-- Start: Phường xã -->
 						<div class="group">
-							<input type="text"  name="addressSchool" th:field="*{addressSchool}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Phường xã</label>
+							<input type="text" name="addressSchool"
+								th:field="*{addressSchool}" th:value="${student.addressSchool}"
+								readonly> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Phường xã</label>
 						</div>
 
 
@@ -678,8 +734,11 @@
 					<div class="col-md-6">
 						<!-- Start: Quận huyện -->
 						<div class="group">
-							<input type="text" name="districtSchool" th:field="*{districtSchool}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Quận huyện</label>
+							<input type="text" name="districtSchool"
+								th:field="*{districtSchool}"
+								th:value="${student.districtSchool}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Quận huyện</label>
 						</div>
 
 
@@ -691,8 +750,11 @@
 					<div class="col-md-6">
 						<!-- Start: Thành phố -->
 						<div class="group">
-							<input type="text" name="provinceSchool" th:field="*{provinceSchool}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Thành phố</label>
+							<input type="text" name="provinceSchool"
+								th:field="*{provinceSchool}"
+								th:value="${student.provinceSchool}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Thành phố</label>
 						</div>
 
 
@@ -725,8 +787,10 @@
 					<div class="col-md-6">
 						<!-- Start: Địa chỉ trọ -->
 						<div class="group">
-							<input type="text" name="addressNow" th:field="*{addressNow}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Địa chỉ trọ</label>
+							<input type="text" name="addressNow" th:field="*{addressNow}"
+								th:value="${student.addressNow}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Địa chỉ trọ</label>
 						</div>
 
 
@@ -738,12 +802,11 @@
 					<div class="col-md-6">
 						<!-- Start: Ghi chú -->
 						<div class="group">
-							<input type="text" name="notes" th:field="*{notes}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Ghi chú</label>
+							<input type="text" name="notes" th:field="*{notes}"
+								th:value="${student.notes}" readonly> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Ghi chú</label>
 						</div>
-
-
-
 						<!-- End: Ghi chú -->
 					</div>
 					<!-- End: Ghi chú -->
@@ -754,29 +817,13 @@
 		<!-- Start: 1 Row 1 Column Lưu -->
 		<div>
 			<div class="container">
-				<button type="submit"
-					class="btn btn-outline-primary btn-rounded waves-effect">Đăng
-					Ký</button>
+				<button class="btn btn-outline-primary btn-rounded waves-effect">
+					<a th:href="@{/index}">Quay lại</a>
+				</button>
 			</div>
 		</div>
 	</form>
 	<!-- End: 1 Row 1 Column Lưu -->
-	<script>
-			function InvalidMsg(textbox) {
-
-				if (textbox.value === '') {
-					textbox
-							.setCustomValidity('Xin hãy nhập Email vì nó cần thiết!!!');
-				} else if (textbox.validity.typeMismatch) {
-					textbox
-							.setCustomValidity('Vui lòng nhập một địa chỉ email hợp lệ! ');
-				} else {
-					textbox.setCustomValidity('');
-				}
-
-				return true;
-			}
-		</script>
 
 
 	<script
@@ -785,6 +832,12 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="/js/dangkytuyensinh.min.js?h=0b948df7679aa160a56561158e46eac6"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="/js/xemhosodangky.min.js?h=0e2ae38a42b261865944f3d2493d5f2e"></script>
 </body>
 
 </html>

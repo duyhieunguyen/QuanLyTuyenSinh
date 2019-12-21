@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edu.giadinh.studentregistration.dto.StudentRegistrationDto;
 import com.edu.giadinh.studentregistration.model.StudentRegistration;
 import com.edu.giadinh.studentregistration.repository.StudentRegistrationRepository;
 
@@ -62,7 +63,7 @@ public class StudentRegistrationServiceImpl implements StudentRegistrationServic
 		// Thông tin thêm
 		stu.setAddressNow(student.getAddressNow());
 		stu.setNotes(student.getNotes());
-		stu.setStatus(student.getStatus());
+		stu.setStatus("Chờ duyệt");
 		return studentRegistrationRepository.save(stu);
 	}
 
@@ -71,16 +72,6 @@ public class StudentRegistrationServiceImpl implements StudentRegistrationServic
 		return studentRegistrationRepository.findAll();
 	}
 
-//	@Override
-//	public List<Student> insert(Student student) {
-//		return (List<Student>) studentRepository.insert(student);
-//	}
-
-	@Override
-	public List<StudentRegistration> findStudentByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<StudentRegistration> findStudentById(Long id) {
@@ -91,6 +82,104 @@ public class StudentRegistrationServiceImpl implements StudentRegistrationServic
 	@Override
 	public StudentRegistration findByEmail(String email) {
 		return studentRegistrationRepository.findByEmail(email);
+	}
+
+	@Override
+	public StudentRegistrationDto studentRegistrationDto(StudentRegistration stu) {
+		StudentRegistrationDto stuDto = new StudentRegistrationDto();
+		stuDto.setStudentCode(stu.getStudentCode());
+		stuDto.setFullName(stu.getFullName());
+		stuDto.setPlaceOfBirth(stu.getPlaceOfBirth());
+		stuDto.setIdOfStudent(stu.getIdOfStudent());
+		stuDto.setPhoneNumber(stu.getPhoneNumber());
+		stuDto.setDateOfBirth(stu.getDateOfBirth());
+		stuDto.setEmail(stu.getEmail());
+		if (stu.getGender().equals("Nam")) {
+			stuDto.setGender("Nam");
+		} else {
+			stuDto.setGender("Nữ");
+		}
+		stuDto.setAreaCode(stu.getAreaCode());
+		stuDto.setMajorRegistration(stu.getMajorRegistration());
+		// Thông tin hộ khẩu
+		stuDto.setAddress(stu.getAddress());
+		stuDto.setSubDistrict(stu.getSubDistrict());
+		stuDto.setDistrict(stu.getDistrict());
+		stuDto.setProvince(stu.getProvince());
+		// Thông tin phụ huynh
+		stuDto.setNameOfFather(stu.getNameOfFather());
+		stuDto.setPhoneNumberOfFather(stu.getPhoneNumberOfFather());
+		stuDto.setNameOfMother(stu.getNameOfMother());
+		stuDto.setPhoneNumberOfMother(stu.getPhoneNumberOfMother());
+		// Điểm học bạ
+		stuDto.setMathScoresInSchoolReport(stu.getMathScoresInSchoolReport());
+		stuDto.setChemistryScoresInSchoolReport(stu.getChemistryScoresInSchoolReport());
+		stuDto.setPhysicsScoresInSchoolReport(stu.getPhysicsScoresInSchoolReport());
+		stuDto.setLiteraryScoresInSchoolReport(stu.getLiteraryScoresInSchoolReport());
+		// Điểm thi tốt nghiệp
+		stuDto.setMathScoresOfGraduationTest(stu.getMathScoresOfGraduationTest());
+		stuDto.setChemistryScoresOfGraduationTest(stu.getChemistryScoresOfGraduationTest());
+		stuDto.setPhysicsScoresOfGraduationTest(stu.getPhysicsScoresOfGraduationTest());
+		stuDto.setLiteraryScoresOfGraduationTest(stu.getLiteraryScoresOfGraduationTest());
+		// Thông tin trường cấp 3
+		stuDto.setAddressSchool(stu.getAddressSchool());
+		stuDto.setDistrictSchool(stu.getDistrictSchool());
+		stuDto.setSubDistrictSchool(stu.getSubDistrictSchool());
+		stuDto.setProvinceSchool(stu.getProvinceSchool());
+		// Thông tin thêm
+		stuDto.setAddressNow(stu.getAddressNow());
+		stuDto.setNotes(stu.getNotes());
+		stuDto.setStatus("Chờ duyệt");
+		return stuDto;
+	}
+
+	@Override
+	public StudentRegistration save(StudentRegistrationDto stuDto) {
+		StudentRegistration stu = new StudentRegistration();
+		stu.setStudentCode(stuDto.getStudentCode());
+		stu.setFullName(stuDto.getFullName());
+		stu.setPlaceOfBirth(stuDto.getPlaceOfBirth());
+		stu.setIdOfStudent(stuDto.getIdOfStudent());
+		stu.setPhoneNumber(stuDto.getPhoneNumber());
+		stu.setDateOfBirth(stuDto.getDateOfBirth());
+		stu.setEmail(stuDto.getEmail());
+		if (stuDto.getGender().equals("Nam")) {
+			stu.setGender("Nam");
+		} else {
+			stu.setGender("Nữ");
+		}
+		stu.setAreaCode(stuDto.getAreaCode());
+		stu.setMajorRegistration(stuDto.getMajorRegistration());
+		// Thông tin hộ khẩu
+		stu.setAddress(stuDto.getAddress());
+		stu.setSubDistrict(stuDto.getSubDistrict());
+		stu.setDistrict(stuDto.getDistrict());
+		stu.setProvince(stuDto.getProvince());
+		// Thông tin phụ huynh
+		stu.setNameOfFather(stuDto.getNameOfFather());
+		stu.setPhoneNumberOfFather(stuDto.getPhoneNumberOfFather());
+		stu.setNameOfMother(stuDto.getNameOfMother());
+		stu.setPhoneNumberOfMother(stuDto.getPhoneNumberOfMother());
+		// Điểm học bạ
+		stu.setMathScoresInSchoolReport(stuDto.getMathScoresInSchoolReport());
+		stu.setChemistryScoresInSchoolReport(stuDto.getChemistryScoresInSchoolReport());
+		stu.setPhysicsScoresInSchoolReport(stuDto.getPhysicsScoresInSchoolReport());
+		stu.setLiteraryScoresInSchoolReport(stuDto.getLiteraryScoresInSchoolReport());
+		// Điểm thi tốt nghiệp
+		stu.setMathScoresOfGraduationTest(stuDto.getMathScoresOfGraduationTest());
+		stu.setChemistryScoresOfGraduationTest(stuDto.getChemistryScoresOfGraduationTest());
+		stu.setPhysicsScoresOfGraduationTest(stuDto.getPhysicsScoresOfGraduationTest());
+		stu.setLiteraryScoresOfGraduationTest(stuDto.getLiteraryScoresOfGraduationTest());
+		// Thông tin trường cấp 3
+		stu.setAddressSchool(stuDto.getAddressSchool());
+		stu.setDistrictSchool(stuDto.getDistrictSchool());
+		stu.setSubDistrictSchool(stuDto.getSubDistrictSchool());
+		stu.setProvinceSchool(stuDto.getProvinceSchool());
+		// Thông tin thêm
+		stu.setAddressNow(stuDto.getAddressNow());
+		stu.setNotes(stuDto.getNotes());
+		stu.setStatus("Chờ duyệt");
+		return studentRegistrationRepository.save(stu);
 	}
 
 }
