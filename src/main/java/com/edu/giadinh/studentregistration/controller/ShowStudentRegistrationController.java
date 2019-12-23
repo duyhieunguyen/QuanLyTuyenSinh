@@ -55,12 +55,7 @@ public class ShowStudentRegistrationController {
 		if (result.hasErrors()) {
 			return "xemHoSo";
 		}
-		List<StudentRegistration> list = studentRegistrationService.findAll();
-		for (StudentRegistration stu : list)
-			if (stu.getEmail().equals(existingEmail)) {
-				StudentRegistrationDto stuDto2 = studentRegistrationService.studentRegistrationDto(stu);
-				model.addAttribute("student", stuDto2);
-			}
+		model.addAttribute("student",existingEmail);
 		return "xemHoSoDangKyTuyenSinh";
 	}
 

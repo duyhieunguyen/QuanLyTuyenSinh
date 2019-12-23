@@ -11,13 +11,9 @@ import com.edu.giadinh.studentregistration.model.StudentRegistration;
 @Repository
 public interface StudentRegistrationRepository extends MongoRepository<StudentRegistration, String> {
 
-	StudentRegistration findByEmail(String email);
-	List<StudentRegistration> findCustomByEmail(String email);
-//
-//	Student findById(Long id);
-//
-	//JSON query string
-	@Query("{fullName:'?0'}")
-	List<StudentRegistration> findEmailByName(String fullName);
 
+	//JSON query string
+//	@Query("{fullName:'?0'}")
+//	List<StudentRegistration> findEmailByName(String fullName);
+	
 }

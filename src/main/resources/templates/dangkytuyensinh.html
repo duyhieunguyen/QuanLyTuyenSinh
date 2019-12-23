@@ -10,6 +10,20 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/css/dangkytuyensinh.min.css?h=c63e89b3c3c9bf46d2111193f5b67830">
+
+<script>
+	$(document).ready(function() {
+		$('input').on('click', function() {
+
+			$('.datepicker').pickadate({
+				format : 'yyyy-mm-dd',
+				formatSubmit : 'yyyy-mm-dd',
+				hiddenPrefix : 'prefix__',
+				hiddenSuffix : '__suffix'
+			});
+		});
+	});
+</script>
 </head>
 
 <body>
@@ -49,9 +63,9 @@
 					<div class="col-md-6">
 						<!-- Start: Mã SV -->
 						<div class="group">
-							<input type="text" name="studentCode" th:field="*{studentCode}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Mã
-								SV</label>
+							<input type="text" name="studentCode" th:field="*{studentCode}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Mã SV</label>
 						</div>
 
 
@@ -63,9 +77,9 @@
 					<div class="col-md-6">
 						<!-- Start: Họ Tên -->
 						<div class="group">
-							<input type="text" name="fullName" th:field="*{fullName}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Họ
-								tên</label>
+							<input type="text" name="fullName" th:field="*{fullName}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Họ tên</label>
 						</div>
 
 
@@ -78,8 +92,8 @@
 						<!-- Start: Ngày Sinh -->
 						<div class="group">
 
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Ngày
-								sinh</label>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Ngày sinh</label>
 						</div>
 
 
@@ -102,9 +116,9 @@
 					<div class="col-md-6">
 						<!-- Start: Nơi Sinh -->
 						<div class="group">
-							<input type="text" name="placeOfBirth" th:field="*{placeOfBirth}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Nơi
-								sinh</label>
+							<input type="text" name="placeOfBirth" th:field="*{placeOfBirth}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Nơi sinh</label>
 						</div>
 
 
@@ -117,8 +131,8 @@
 						<!-- Start: Giới tính -->
 						<div class="group">
 
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Giới
-								tính</label>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Giới tính</label>
 						</div>
 
 
@@ -147,9 +161,9 @@
 					<div class="col-md-6">
 						<!-- Start: Số CMND -->
 						<div class="group">
-							<input type="text" name="idOfStudent" th:field="*{idOfStudent}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Số
-								CMND</label>
+							<input type="text" name="idOfStudent" th:field="*{idOfStudent}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Số CMND</label>
 						</div>
 
 
@@ -161,9 +175,9 @@
 					<div class="col-md-6">
 						<!-- Start: Khu vực -->
 						<div class="group">
-							<input type="text" name="areaCode" th:field="*{areaCode}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Khu
-								vực</label>
+							<input type="text" name="areaCode" th:field="*{areaCode}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Khu vực</label>
 						</div>
 
 
@@ -178,7 +192,8 @@
 							<input type="text" name="phoneNumber" th:field="*{phoneNumber}"
 								onkeypress="return event.charCode >= 48 && event.charCode <= 57"
 								maxlength="10" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Số điện thoại</label>
+							<span class="bar"></span> <label class="active">Số điện
+								thoại</label>
 						</div>
 
 
@@ -196,8 +211,8 @@
 								th:field="*{email}" type="text" name="email" id="email"
 								onclick="InvalidMsg(this);" oninvalid="InvalidMsg(this);"
 								oninput="InvalidMsg(this);" required="required"> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Email</label>
-							</span>
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Email</label> </span>
 							<p class="error-message" style="color: red;"
 								th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
 								error</p>
@@ -210,8 +225,8 @@
 					<div class="col-md-6">
 						<!-- Start: Ngành đăng ký -->
 						<div class="group">
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Ngành
-								đăng ký</label>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Ngành đăng ký</label>
 						</div>
 
 
@@ -260,9 +275,9 @@
 					<div class="col-md-6">
 						<!-- Start: Địa chỉ -->
 						<div class="group">
-							<input type="text" name="address" th:field="*{address}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Địa
-								chỉ</label>
+							<input type="text" name="address" th:field="*{address}" required>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Địa chỉ</label>
 						</div>
 
 
@@ -274,9 +289,9 @@
 					<div class="col-md-6">
 						<!-- Start: Phường xã -->
 						<div class="group">
-							<input type="text" name="subDistrict" th:field="*{subDistrict}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Phường
-								xã</label>
+							<input type="text" name="subDistrict" th:field="*{subDistrict}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Phường xã</label>
 						</div>
 
 
@@ -288,9 +303,9 @@
 					<div class="col-md-6">
 						<!-- Start: Quận huyện -->
 						<div class="group">
-							<input type="text" name="district" th:field="*{district}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Quận
-								huyện</label>
+							<input type="text" name="district" th:field="*{district}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Quận huyện</label>
 						</div>
 
 
@@ -302,9 +317,9 @@
 					<div class="col-md-6">
 						<!-- Start: Tỉnh thành -->
 						<div class="group">
-							<input type="text" name="province" th:field="*{province}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Tỉnh
-								thành</label>
+							<input type="text" name="province" th:field="*{province}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Tỉnh thành</label>
 						</div>
 
 
@@ -425,9 +440,9 @@
 					<div class="col-md-6">
 						<!-- Start: Họ tên cha -->
 						<div class="group">
-							<input type="text" name="nameOfFather" th:field="*{nameOfFather}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Họ
-								tên cha</label>
+							<input type="text" name="nameOfFather" th:field="*{nameOfFather}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Họ tên cha</label>
 						</div>
 
 
@@ -441,8 +456,9 @@
 						<div class="group">
 							<input type="text" name="phoneNumberOfFather"
 								onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-								maxlength="10" th:field="*{phoneNumberOfFather}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Số điện thoại</label>
+								maxlength="10" th:field="*{phoneNumberOfFather}" required>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Số điện thoại</label>
 						</div>
 
 
@@ -454,9 +470,9 @@
 					<div class="col-md-6">
 						<!-- Start: Họ tên mẹ -->
 						<div class="group">
-							<input type="text" name="nameOfMother" th:field="*{nameOfMother}" required> <span
-								class="highlight"></span> <span class="bar"></span> <label class="active">Họ
-								tên mẹ</label>
+							<input type="text" name="nameOfMother" th:field="*{nameOfMother}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Họ tên mẹ</label>
 						</div>
 
 
@@ -468,10 +484,12 @@
 					<div class="col-md-6">
 						<!-- Start: Số điện thoại -->
 						<div class="group">
-							<input type="text" name="phoneNumberOfMother" th:field="*{phoneNumberOfMother}"
+							<input type="text" name="phoneNumberOfMother"
+								th:field="*{phoneNumberOfMother}"
 								onkeypress="return event.charCode >= 48 && event.charCode <= 57"
 								maxlength="10" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Số điện thoại</label>
+							<span class="bar"></span> <label class="active">Số điện
+								thoại</label>
 						</div>
 
 
@@ -504,8 +522,10 @@
 					<div class="col-md-6">
 						<!-- Start: Toán -->
 						<div class="group">
-							<input type="text" name="mathScoresInSchoolReport" th:field="*{mathScoresInSchoolReport}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Toán</label>
+							<input type="text" name="mathScoresInSchoolReport"
+								th:field="*{mathScoresInSchoolReport}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Toán</label>
 						</div>
 
 
@@ -517,8 +537,10 @@
 					<div class="col-md-6">
 						<!-- Start: Lý -->
 						<div class="group">
-							<input type="text" name="physicsScoresInSchoolReport" th:field="*{physicsScoresInSchoolReport}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Lý</label>
+							<input type="text" name="physicsScoresInSchoolReport"
+								th:field="*{physicsScoresInSchoolReport}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Lý</label>
 						</div>
 
 
@@ -530,8 +552,10 @@
 					<div class="col-md-6">
 						<!-- Start: Hóa -->
 						<div class="group">
-							<input type="text" name="chemistryScoresInSchoolReport" th:field="*{chemistryScoresInSchoolReport}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Hóa</label>
+							<input type="text" name="chemistryScoresInSchoolReport"
+								th:field="*{chemistryScoresInSchoolReport}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Hóa</label>
 						</div>
 
 
@@ -543,8 +567,10 @@
 					<div class="col-md-6">
 						<!-- Start: Văn -->
 						<div class="group">
-							<input type="text" name="literaryScoresInSchoolReport" th:field="*{literaryScoresInSchoolReport}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Văn</label>
+							<input type="text" name="literaryScoresInSchoolReport"
+								th:field="*{literaryScoresInSchoolReport}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Văn</label>
 						</div>
 
 
@@ -578,8 +604,10 @@
 					<div class="col-md-6">
 						<!-- Start: Toán -->
 						<div class="group">
-							<input type="text" name="mathScoresOfGraduationTest" th:field="*{mathScoresOfGraduationTest}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Toán</label>
+							<input type="text" name="mathScoresOfGraduationTest"
+								th:field="*{mathScoresOfGraduationTest}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Toán</label>
 						</div>
 
 
@@ -591,8 +619,10 @@
 					<div class="col-md-6">
 						<!-- Start: Lý -->
 						<div class="group">
-							<input type="text" name="physicsScoresOfGraduationTest" th:field="*{physicsScoresOfGraduationTest}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Lý</label>
+							<input type="text" name="physicsScoresOfGraduationTest"
+								th:field="*{physicsScoresOfGraduationTest}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Lý</label>
 						</div>
 
 
@@ -604,9 +634,10 @@
 					<div class="col-md-6">
 						<!-- Start: Hóa -->
 						<div class="group">
-							<input type="text" name="chemistryScoresOfGraduationTest" th:field="*{chemistryScoresOfGraduationTest}"
-								required> <span class="highlight"></span> <span
-								class="bar"></span> <label class="active">Hóa</label>
+							<input type="text" name="chemistryScoresOfGraduationTest"
+								th:field="*{chemistryScoresOfGraduationTest}" required>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Hóa</label>
 						</div>
 
 
@@ -618,8 +649,10 @@
 					<div class="col-md-6">
 						<!-- Start: Văn -->
 						<div class="group">
-							<input type="text" name="literaryScoresOfGraduationTest" th:field="*{literaryScoresOfGraduationTest}" required>
-							<span class="highlight"></span> <span class="bar"></span> <label class="active">Văn</label>
+							<input type="text" name="literaryScoresOfGraduationTest"
+								th:field="*{literaryScoresOfGraduationTest}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Văn</label>
 						</div>
 
 
@@ -652,8 +685,10 @@
 					<div class="col-md-6">
 						<!-- Start: Tên trường -->
 						<div class="group">
-							<input type="text" name="subDistrictSchool" th:field="*{subDistrictSchool}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Tên trường</label>
+							<input type="text" name="subDistrictSchool"
+								th:field="*{subDistrictSchool}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Tên trường</label>
 						</div>
 
 
@@ -665,8 +700,10 @@
 					<div class="col-md-6">
 						<!-- Start: Phường xã -->
 						<div class="group">
-							<input type="text"  name="addressSchool" th:field="*{addressSchool}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Phường xã</label>
+							<input type="text" name="addressSchool"
+								th:field="*{addressSchool}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Phường xã</label>
 						</div>
 
 
@@ -678,8 +715,10 @@
 					<div class="col-md-6">
 						<!-- Start: Quận huyện -->
 						<div class="group">
-							<input type="text" name="districtSchool" th:field="*{districtSchool}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Quận huyện</label>
+							<input type="text" name="districtSchool"
+								th:field="*{districtSchool}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Quận huyện</label>
 						</div>
 
 
@@ -691,8 +730,10 @@
 					<div class="col-md-6">
 						<!-- Start: Thành phố -->
 						<div class="group">
-							<input type="text" name="provinceSchool" th:field="*{provinceSchool}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Thành phố</label>
+							<input type="text" name="provinceSchool"
+								th:field="*{provinceSchool}" required> <span
+								class="highlight"></span> <span class="bar"></span> <label
+								class="active">Thành phố</label>
 						</div>
 
 
@@ -725,8 +766,9 @@
 					<div class="col-md-6">
 						<!-- Start: Địa chỉ trọ -->
 						<div class="group">
-							<input type="text" name="addressNow" th:field="*{addressNow}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Địa chỉ trọ</label>
+							<input type="text" name="addressNow" th:field="*{addressNow}"
+								required> <span class="highlight"></span> <span
+								class="bar"></span> <label class="active">Địa chỉ trọ</label>
 						</div>
 
 
@@ -738,8 +780,9 @@
 					<div class="col-md-6">
 						<!-- Start: Ghi chú -->
 						<div class="group">
-							<input type="text" name="notes" th:field="*{notes}" required> <span class="highlight"></span>
-							<span class="bar"></span> <label class="active">Ghi chú</label>
+							<input type="text" name="notes" th:field="*{notes}" required>
+							<span class="highlight"></span> <span class="bar"></span> <label
+								class="active">Ghi chú</label>
 						</div>
 
 
@@ -762,21 +805,23 @@
 	</form>
 	<!-- End: 1 Row 1 Column Lưu -->
 	<script>
-			function InvalidMsg(textbox) {
+		function InvalidMsg(textbox) {
 
-				if (textbox.value === '') {
-					textbox
-							.setCustomValidity('Xin hãy nhập Email vì nó cần thiết!!!');
-				} else if (textbox.validity.typeMismatch) {
-					textbox
-							.setCustomValidity('Vui lòng nhập một địa chỉ email hợp lệ! ');
-				} else {
-					textbox.setCustomValidity('');
-				}
-
-				return true;
+			if (textbox.value === '') {
+				textbox
+						.setCustomValidity('Xin hãy nhập Email vì nó cần thiết!!!');
+			} else if (textbox.validity.typeMismatch) {
+				textbox
+						.setCustomValidity('Vui lòng nhập một địa chỉ email hợp lệ! ');
+			} else {
+				textbox.setCustomValidity('');
 			}
-		</script>
+
+			return true;
+		}
+	</script>
+
+
 
 
 	<script

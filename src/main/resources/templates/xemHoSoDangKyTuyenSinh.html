@@ -10,27 +10,81 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/css/xemhosodangky.min.css?h=c63e89b3c3c9bf46d2111193f5b67830">
+
+<style>
+label {
+	top: -15px;
+}
+
+.ngaysinh {
+	top: 10px;
+}
+
+.gioitinh {
+	top: 10px;
+}
+</style>
 </head>
 
 <body>
-	<div class="container" style="height: 100px">
-		<h3 style="text-align: center;">Quá trình xét duyệt hồ sơ</h3>
+	<form th:action="@{/xemHoSoDangKyTuyenSinh}" method="post"
+		th:object="${student}">
+		<div class="container" style="height: 100px">
+			<h3 style="text-align: center;">Quá trình xét duyệt hồ sơ</h3>
 
-		<div class="progress">
-			<div
-				class="progress-bar bg-success progress-bar-striped progress-bar-animated"
-				style="width: 25%">Đã đăng ký</div>
-			<div
-				class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
-				style="width: 25%">Chờ duyệt</div>
-			<div
-				class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
-				style="width: 25%">Trúng tuyển</div>
-			<div
-				class="progress-bar bg-blue progress-bar-striped progress-bar-animated"
-				style="width: 25%">Đang học</div>
+			<div class="progress">
+
+				<!-- Chờ duyệt -->
+				<div
+					class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+					style="width: 33.33%; color: black; font-weight: bold;" th:if="${student.status} == 'Chờ duyệt'">Đã đăng
+					ký</div>
+
+				<div
+					class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+					style="width: 33.33%; color: black; font-weight: bold;"
+					th:if="${student.status} == 'Chờ duyệt'">Chờ duyệt</div>
+
+				<!-- Trúng tuyển -->
+				
+				<div
+					class="progress-bar bg-blue progress-bar-striped progress-bar-animated"
+					style="width: 33.33%; color: black; font-weight: bold;" th:if="${student.status} == 'Trúng tuyển'">Đã đăng
+					ký</div>
+
+				<div
+					class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+					style="width: 33.33%; color: black; font-weight: bold;"
+					th:if="${student.status} == 'Trúng tuyển'">Chờ duyệt</div>
+
+				<div
+					class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+					style="width: 33.33%; color: black; font-weight: bold;"
+					th:if="${student.status} == 'Trúng tuyển'">Trúng tuyển</div>
+
+				<!-- Rớt -->
+				<div
+					class="progress-bar bg-blue progress-bar-striped progress-bar-animated"
+					style="width: 33.33%; color: black; font-weight: bold;" th:if="${student.status} == 'Trượt'">Đã đăng
+					ký</div>
+				<div
+					class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+					style="width: 33.33%; color: black; font-weight: bold;"
+					th:if="${student.status} == 'Trượt'">Chờ duyệt</div>
+				<div
+					class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
+					style="width: 33.33%; color: black; font-weight: bold;"
+					th:if="${student.status}== 'Trượt'">Trượt</div>
+
+				<!-- Đang học -->
+				
+				<div
+					class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+					style="width: 100%; color: black; font-weight: bold;"
+					th:if="${student.status} == 'Đang học'">Đang học</div>
+			</div>
 		</div>
-	</div>
+	</form>
 	<!-- Start: Projects Horizontal -->
 
 	<div class="projects-horizontal">
@@ -66,11 +120,12 @@
 					<!-- Start: Mã SV -->
 					<div class="col-md-6">
 						<!-- Start: Mã SV -->
+
 						<div class="group">
 							<input type="text" name="studentCode" th:field="*{studentCode}"
 								value="${student.studentCode}" readonly> <span
-								class="highlight"></span> <span class="bar"></span> <label
-								class="active">Mã SV</label>
+								class="highlight"></span> <span class="bar"></span><label>Mã
+								SV</label>
 						</div>
 
 						<!-- End: Mã SV -->
@@ -97,7 +152,7 @@
 						<div class="group">
 
 							<span class="highlight"></span> <span class="bar"></span> <label
-								class="active">Ngày sinh</label>
+								class="active ngaysinh">Ngày sinh</label>
 						</div>
 
 
@@ -105,7 +160,7 @@
 						<!-- End: Ngày Sinh -->
 						<!-- Start: DatePicker -->
 						<div class="date">
-							<input placeholder="Chọn ngày" type="text" name="dateOfBirth"
+							<input placeholder="Chọn ngày" th:value="${student.dateOfBirth}" th:field="*{dateOfBirth}" type="text" name="dateOfBirth"
 								id="date-picker-example" class="form-control datepicker">
 						</div>
 
@@ -137,7 +192,7 @@
 						<div class="group">
 
 							<span class="highlight"></span> <span class="bar"></span> <label
-								class="active">Giới tính</label>
+								class="active gioitinh">Giới tính</label>
 						</div>
 
 

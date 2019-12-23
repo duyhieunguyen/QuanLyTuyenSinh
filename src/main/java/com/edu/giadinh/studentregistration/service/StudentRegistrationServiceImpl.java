@@ -3,6 +3,9 @@ package com.edu.giadinh.studentregistration.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.edu.giadinh.studentregistration.dto.StudentRegistrationDto;
@@ -15,6 +18,9 @@ public class StudentRegistrationServiceImpl implements StudentRegistrationServic
 	@Autowired
 	private StudentRegistrationRepository studentRegistrationRepository;
 
+	@Autowired
+    MongoTemplate mongoTemplate;
+	
 	@Override
 	public StudentRegistration save(StudentRegistration student) {
 		StudentRegistration stu = new StudentRegistration();
@@ -63,7 +69,7 @@ public class StudentRegistrationServiceImpl implements StudentRegistrationServic
 		// Thông tin thêm
 		stu.setAddressNow(student.getAddressNow());
 		stu.setNotes(student.getNotes());
-		stu.setStatus("Chờ duyệt");
+		stu.setStatus("Đang học");
 		return studentRegistrationRepository.save(stu);
 	}
 
@@ -81,7 +87,13 @@ public class StudentRegistrationServiceImpl implements StudentRegistrationServic
 
 	@Override
 	public StudentRegistration findByEmail(String email) {
-		return studentRegistrationRepository.findByEmail(email);
+		Query query = new Query();
+		query.addCriteria(Criteria.where("email").is(email));
+        StudentRegistration SR = mongoTemplate.findOne(query, StudentRegistration.class);
+        if (SR == null)
+        	return null;
+		return SR;
+        //return studentRegistrationRepository.findUserByEmail(email);
 	}
 
 	@Override
@@ -129,7 +141,7 @@ public class StudentRegistrationServiceImpl implements StudentRegistrationServic
 		// Thông tin thêm
 		stuDto.setAddressNow(stu.getAddressNow());
 		stuDto.setNotes(stu.getNotes());
-		stuDto.setStatus("Chờ duyệt");
+		stuDto.setStatus("Đang học");
 		return stuDto;
 	}
 
@@ -178,7 +190,7 @@ public class StudentRegistrationServiceImpl implements StudentRegistrationServic
 		// Thông tin thêm
 		stu.setAddressNow(stuDto.getAddressNow());
 		stu.setNotes(stuDto.getNotes());
-		stu.setStatus("Chờ duyệt");
+		stu.setStatus("Đang học");
 		return studentRegistrationRepository.save(stu);
 	}
 
